@@ -15,4 +15,11 @@ async function createUser({ username, password }) {
   return user;
 }
 
-module.exports = { createUser };
+async function getAllUsers() {
+  const { rows } = await client.query(`
+    SELECT * FROM users;
+  `);
+  return rows;
+}
+
+module.exports = { createUser, getAllUsers };
