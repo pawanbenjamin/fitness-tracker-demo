@@ -22,4 +22,17 @@ async function getAllUsers() {
   return rows;
 }
 
-module.exports = { createUser, getAllUsers };
+const getUserByUsername = async (username) => {
+  const {
+    rows: [user],
+  } = await client.query(
+    `
+    SELECT * FROM users
+    WHERE username = $1
+    `,
+    [username]
+  );
+  return user;
+};
+
+module.exports = { createUser, getAllUsers, getUserByUsername };
