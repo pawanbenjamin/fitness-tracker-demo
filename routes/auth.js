@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
 const { createUser, getUserByUsername } = require("../db/adapters/users");
+const { authRequired } = require("./utlis");
 
 // POST /api/auth/register
 authRouter.post("/register", async (req, res, next) => {
@@ -58,6 +59,10 @@ authRouter.get("/logout", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+authRouter.get("/me", authRequired, (req, res, next) => {
+  res.send(req.user);
 });
 
 module.exports = authRouter;
