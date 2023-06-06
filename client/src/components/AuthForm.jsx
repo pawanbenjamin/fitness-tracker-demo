@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { registerUser } from "../api/auth";
+import { registerUser, loginUser } from "../api/auth";
+import { useLocation } from "react-router-dom";
 
 export default function AuthForm() {
+  const { pathname } = useLocation();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -10,7 +13,13 @@ export default function AuthForm() {
     e.preventDefault();
     try {
       console.log({ username, password });
-      const result = await registerUser(username, password);
+      let result;
+      if (pathname === "/register") {
+        result = await registerUser(username, password);
+      } else {
+        result = await loginUser(username, password);
+      }
+
       console.log("result: ", result);
       if (result.success) {
         console.log("Result: ", result);

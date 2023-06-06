@@ -27,6 +27,7 @@ function App() {
       {healthMessage && <p>{healthMessage}</p>}
       <Routes>
         <Route path="/register" element={<AuthForm />} />
+        <Route path="/login" element={<AuthForm />} />
       </Routes>
     </>
   );
