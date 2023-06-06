@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import AuthForm from "./components/AuthForm";
 
 import "./App.css";
 
@@ -23,6 +25,9 @@ function App() {
     <>
       {error && <p>{JSON.stringify(error, null, 2)}</p>}
       {healthMessage && <p>{healthMessage}</p>}
+      <Routes>
+        <Route path="/register" element={<AuthForm />} />
+      </Routes>
     </>
   );
 }
