@@ -14,4 +14,14 @@ async function createRoutine({ name, goal, creator_id, is_public = true }) {
   return routine;
 }
 
+async function getRoutineById() {}
+
+async function deleteRoutineById() {}
+
+async function updateRoutineById() {}
+
+async function getAllPublicRoutines() {}
+
+async function getAllRoutinesByUserId() {}
+
 module.exports = { createRoutine };
