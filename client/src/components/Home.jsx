@@ -1,3 +1,9 @@
+import DashboardLayout from "./Dashboard";
+
 export default function Home() {
-  return <h1>The Home Page</h1>;
+  return (
+    <DashboardLayout>
+      <h1>The Home Page</h1>
+    </DashboardLayout>
+  );
 }
