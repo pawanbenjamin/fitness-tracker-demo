@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { registerUser, loginUser } from "../../api/auth";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 export default function AuthForm() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { setLoggedIn } = useAuth();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +22,7 @@ export default function AuthForm() {
         result = await loginUser(username, password);
       }
       if (result.success) {
-        console.log("Auth Result: ", result);
+        setLoggedIn(true);
         navigate("/");
       }
     } catch (error) {

@@ -103,7 +103,7 @@ authRouter.get("/logout", async (req, res, next) => {
 });
 
 authRouter.get("/me", authRequired, (req, res, next) => {
-  res.send(req.user);
+  res.send({ success: true, message: "you are authorized", user: req.user });
 });
 
 module.exports = authRouter;

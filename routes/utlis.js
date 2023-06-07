@@ -7,7 +7,7 @@ const authRequired = (req, res, next) => {
     console.log("Req.user: ", req.user);
   } catch (error) {
     res.status(401).send({
-      loggedIn: false,
+      success: false,
       message: "You are not authorized!!!",
     });
     return;

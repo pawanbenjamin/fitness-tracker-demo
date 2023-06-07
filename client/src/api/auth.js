@@ -51,3 +51,18 @@ export async function logout() {
     message,
   };
 }
+
+export async function fetchMe() {
+  const response = await fetch("/api/auth/me");
+  const { success, message, user } = await response.json();
+  if (!success) {
+    throw {
+      message,
+    };
+  }
+  return {
+    success,
+    message,
+    user,
+  };
+}
