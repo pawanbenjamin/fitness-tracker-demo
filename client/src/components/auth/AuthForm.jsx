@@ -19,9 +19,8 @@ export default function AuthForm() {
       } else {
         result = await loginUser(username, password);
       }
-      console.log(result);
       if (result.success) {
-        console.log("Result: ", result);
+        console.log("Auth Result: ", result);
         navigate("/");
       }
     } catch (error) {
