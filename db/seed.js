@@ -1,10 +1,12 @@
 const client = require("./client");
 const { createUser } = require("./adapters/users");
-const { users } = require("./seedData");
+const { createRoutine } = require("./adapters/routines");
+const { users, routines } = require("./seedData");
 
 async function dropTables() {
   console.log("Dropping tables...");
   try {
+    await client.query(`DROP TABLE IF EXISTS routines`);
     await client.query(`DROP TABLE IF EXISTS users;`);
   } catch (error) {
     console.error(error);
@@ -21,6 +23,15 @@ async function createTables() {
             password TEXT NOT NULL
         )
     `);
+    await client.query(`
+        CREATE TABLE routines(
+          id SERIAL PRIMARY KEY,
+          creator_id INTEGER REFERENCES users(id),
+          is_public BOOLEAN DEFAULT true,
+          name TEXT UNIQUE NOT NULL,
+          goal TEXT
+        )
+      `);
   } catch (error) {
     console.log(error);
   }
@@ -29,10 +40,19 @@ async function createTables() {
 async function populateTables() {
   console.log("Populating tables...");
   try {
-    for (const user of users) {
-      const createdUser = await createUser(user);
-      console.log("User: ", createdUser);
-    }
+    const createdUsers = await Promise.all(
+      users.map(async (user) => {
+        return await createUser(user);
+      })
+    );
+
+    console.log("Users: ", createdUsers);
+    const createdRoutines = await Promise.all(
+      routines.map(async (routine) => {
+        return await createRoutine(routine);
+      })
+    );
+    console.log("Routines: ", createdRoutines);
   } catch (error) {
     console.error(error);
   }
