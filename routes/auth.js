@@ -10,9 +10,9 @@ authRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
-    // Check if username exists already
     const _user = await getUserByUsername(username);
     if (_user) {
+      res.status(409);
       next({
         message: "That user already exists!",
         name: "Auth Error",
@@ -32,19 +32,60 @@ authRouter.post("/register", async (req, res, next) => {
       signed: true,
     });
 
-    res.send(user);
+    res.send({
+      success: true,
+      message: "Registration Sucessful!",
+      data: user,
+    });
   } catch (error) {
     next(error);
   }
 });
 
+// POST /api/auth/login
 authRouter.post("/login", async (req, res, next) => {
   try {
+    const { username, password } = req.body;
+
+    const user = await getUserByUsername(username);
+    if (!user) {
+      res.status(401);
+      next({
+        message: "There is no user with that username!",
+        name: "Auth Error",
+      });
+      return;
+    }
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    if (!isValidPassword) {
+      res.status(401);
+      next({
+        message: "Your password is incorrect!",
+        name: "Auth Error",
+      });
+      return;
+    }
+    delete user.password;
+
+    const token = jwt.sign(user, process.env.JWT_SECRET);
+
+    res.cookie("token", token, {
+      sameSite: "strict",
+      httpOnly: true,
+      signed: true,
+    });
+
+    res.send({
+      success: true,
+      message: "Registration Sucessful!",
+      data: user,
+    });
   } catch (error) {
     next(error);
   }
 });
 
+// GET /api/auth/logout
 authRouter.get("/logout", async (req, res, next) => {
   try {
     res.clearCookie("token", {
@@ -53,7 +94,7 @@ authRouter.get("/logout", async (req, res, next) => {
       signed: true,
     });
     res.send({
-      loggedIn: false,
+      success: true,
       message: "Logged Out!",
     });
   } catch (error) {
@@ -62,7 +103,7 @@ authRouter.get("/logout", async (req, res, next) => {
 });
 
 authRouter.get("/me", authRequired, (req, res, next) => {
-  res.send(req.user);
+  res.send({ success: true, message: "you are authorized", user: req.user });
 });
 
 module.exports = authRouter;
