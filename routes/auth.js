@@ -13,6 +13,7 @@ authRouter.post("/register", async (req, res, next) => {
     // Check if username exists already
     const _user = await getUserByUsername(username);
     if (_user) {
+      res.status(409);
       next({
         message: "That user already exists!",
         name: "Auth Error",
@@ -32,7 +33,11 @@ authRouter.post("/register", async (req, res, next) => {
       signed: true,
     });
 
-    res.send(user);
+    res.send({
+      success: true,
+      message: "Registration Sucessful!",
+      data: user,
+    });
   } catch (error) {
     next(error);
   }
@@ -71,7 +76,11 @@ authRouter.post("/login", async (req, res, next) => {
       signed: true,
     });
 
-    res.send(user);
+    res.send({
+      success: true,
+      message: "Registration Sucessful!",
+      data: user,
+    });
   } catch (error) {
     next(error);
   }

@@ -1,37 +1,39 @@
 export async function registerUser(username, password) {
-  try {
-    const response = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    });
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error(error);
+  const response = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  });
+  const { success, message, data } = await response.json();
+  if (!success) {
+    throw {
+      message,
+    };
   }
+  return { success, message, data };
 }
 
 export async function loginUser(username, password) {
-  try {
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    });
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error(error);
+  const response = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  });
+  const { success, message, data } = await response.json();
+  if (!success) {
+    throw {
+      message,
+    };
   }
+  return { success, message, data };
 }

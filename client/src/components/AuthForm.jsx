@@ -12,24 +12,21 @@ export default function AuthForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      console.log({ username, password });
       let result;
       if (pathname === "/register") {
         result = await registerUser(username, password);
       } else {
         result = await loginUser(username, password);
       }
-
-      console.log("result: ", result);
+      console.log(result);
       if (result.success) {
         console.log("Result: ", result);
-      } else {
-        setError(result.message);
       }
-      setUsername("");
-      setPassword("");
     } catch (error) {
       setError(error.message);
+    } finally {
+      setUsername("");
+      setPassword("");
     }
   }
 
