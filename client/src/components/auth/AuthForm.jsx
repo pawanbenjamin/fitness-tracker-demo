@@ -23,7 +23,11 @@ export default function AuthForm() {
       }
       if (result.success) {
         setLoggedIn(true);
+<<<<<<< HEAD
         navigate("/dashboard/profile");
+=======
+        navigate("/home");
+>>>>>>> react-router
       }
     } catch (error) {
       setError(error.message);
