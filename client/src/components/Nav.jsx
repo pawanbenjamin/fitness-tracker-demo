@@ -13,20 +13,11 @@ export default function Nav() {
   }
 
   return (
-<<<<<<< HEAD
     <nav>
       <h3>hello, {user.username}</h3>
       <Link to="/dashboard/activities">Activities</Link>
       <Link to="/dashboard/profile">My Profile</Link>
       <button onClick={handleLogout}>Log Out</button>
-=======
-    <nav className="flex flex-row justify-center">
-      <h3>Welcome, {user.username}</h3>
-      {/* <Link to="/home">Home</Link> */}
-      {user.username !== "Guest" && (
-        <button onClick={handleLogout}>Logout</button>
-      )}
->>>>>>> react-router
     </nav>
   );
 }
