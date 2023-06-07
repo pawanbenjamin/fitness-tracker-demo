@@ -14,6 +14,9 @@ export default function Nav() {
 
   return (
     <nav>
+      <h3>hello, {user.username}</h3>
+      <Link to="/dashboard/activities">Activities</Link>
+      <Link to="/dashboard/profile">My Profile</Link>
       <button onClick={handleLogout}>Log Out</button>
     </nav>
   );
