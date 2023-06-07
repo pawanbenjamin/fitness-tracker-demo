@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { registerUser, loginUser } from "../../api/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 export default function AuthForm() {
@@ -23,7 +23,7 @@ export default function AuthForm() {
       }
       if (result.success) {
         setLoggedIn(true);
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       setError(error.message);
@@ -53,6 +53,15 @@ export default function AuthForm() {
         </label>
         <button>Submit!</button>
       </form>
+      {pathname === "/register" ? (
+        <p>
+          Already have an account? <Link to="/login">Login Here</Link>
+        </p>
+      ) : (
+        <p>
+          Don't have an account? <Link to="/register">Register Here</Link>
+        </p>
+      )}
     </div>
   );
 }

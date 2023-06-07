@@ -10,13 +10,5 @@ export default function Nav() {
     setLoggedIn(!loggedIn);
   }
 
-  return (
-    <nav>
-      <h3>Welcome, {user.username}</h3>
-      {/* <Link to="/">Home</Link> */}
-      <Link to="/register">Register</Link>
-      <Link to="/login">Login</Link>
-      <button onClick={handleLogout}>Logout</button>
-    </nav>
-  );
+  return <nav></nav>;
 }
