@@ -14,14 +14,77 @@ async function createRoutine({ name, goal, creator_id, is_public = true }) {
   return routine;
 }
 
-async function getRoutineById() {}
+async function getRoutineById(id) {
+  const {
+    rows: [routine],
+  } = await client.query(
+    `
+            SELECT * FROM routines
+            WHERE id=$1
+        `,
+    [id]
+  );
+  return routine;
+}
 
-async function deleteRoutineById() {}
+async function deleteRoutineById(id) {
+  const {
+    rows: [deletedRoutine],
+  } = await client.query(
+    `
+        DELETE FROM routines
+        WHERE id=$1
+        RETURNING *
+    `,
+    [id]
+  );
+  return deletedRoutine;
+}
 
-async function updateRoutineById() {}
+async function updateRoutineById(id, fields) {
+  const setString = Object.keys(fields)
+    .map((key, i) => {
+      return `${key}=$${i + 1}`;
+    })
+    .join(`, `);
 
-async function getAllPublicRoutines() {}
+  const {
+    rows: [updatedRoutine],
+  } = await client.query(
+    `
+        UPDATE routines
+        SET ${setString}
+        WHERE id=${id}
+        RETURNING *
+    `,
+    Object.values(fields)
+  );
+  return updatedRoutine;
+}
 
-async function getAllRoutinesByUserId() {}
+async function getAllPublicRoutines() {
+  const { rows } = await client.query(`
+        SELECT * FROM routines;
+    `);
+  return rows;
+}
 
-module.exports = { createRoutine };
+async function getAllRoutinesByUserId(id) {
+  const { rows } = await client.query(
+    `
+        SELECT * FROM routines
+        WHERE id=$1
+    `,
+    [id]
+  );
+  return rows;
+}
+
+module.exports = {
+  createRoutine,
+  getRoutineById,
+  deleteRoutineById,
+  updateRoutineById,
+  getAllPublicRoutines,
+  getAllRoutinesByUserId,
+};
