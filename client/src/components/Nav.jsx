@@ -11,12 +11,12 @@ export default function Nav() {
   }
 
   return (
-    <nav>
+    <nav className="flex flex-row justify-center">
       <h3>Welcome, {user.username}</h3>
-      {/* <Link to="/">Home</Link> */}
-      <Link to="/register">Register</Link>
-      <Link to="/login">Login</Link>
-      <button onClick={handleLogout}>Logout</button>
+      {/* <Link to="/home">Home</Link> */}
+      {user.username !== "Guest" && (
+        <button onClick={handleLogout}>Logout</button>
+      )}
     </nav>
   );
 }

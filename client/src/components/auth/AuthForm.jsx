@@ -23,7 +23,7 @@ export default function AuthForm() {
       }
       if (result.success) {
         setLoggedIn(true);
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       setError(error.message);
