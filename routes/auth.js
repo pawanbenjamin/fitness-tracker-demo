@@ -10,7 +10,6 @@ authRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
-    // Check if username exists already
     const _user = await getUserByUsername(username);
     if (_user) {
       res.status(409);
@@ -43,11 +42,11 @@ authRouter.post("/register", async (req, res, next) => {
   }
 });
 
+// POST /api/auth/login
 authRouter.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
-    // Check if username exists already
     const user = await getUserByUsername(username);
     if (!user) {
       res.status(401);
@@ -86,6 +85,7 @@ authRouter.post("/login", async (req, res, next) => {
   }
 });
 
+// GET /api/auth/logout
 authRouter.get("/logout", async (req, res, next) => {
   try {
     res.clearCookie("token", {
@@ -94,7 +94,7 @@ authRouter.get("/logout", async (req, res, next) => {
       signed: true,
     });
     res.send({
-      loggedIn: false,
+      success: true,
       message: "Logged Out!",
     });
   } catch (error) {

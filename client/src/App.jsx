@@ -28,6 +28,7 @@ function App() {
       <Nav />
       {healthMessage && <p>{healthMessage}</p>}
       <Routes>
+        <Route path="/" element={<h2>Home</h2>} />
         <Route path="/register" element={<AuthForm />} />
         <Route path="/login" element={<AuthForm />} />
       </Routes>
