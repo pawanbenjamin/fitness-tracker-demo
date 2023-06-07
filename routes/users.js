@@ -5,7 +5,7 @@ const { getAllUsers } = require("../db/adapters/users");
 usersRouter.get("/", async (req, res, next) => {
   try {
     const users = await getAllUsers();
-    res.send(users);
+    res.send({ success: true, users });
   } catch (error) {
     next(error);
   }
