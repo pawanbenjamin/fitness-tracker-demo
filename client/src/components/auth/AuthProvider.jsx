@@ -10,7 +10,7 @@ const AuthProvder = ({ children }) => {
   useEffect(() => {
     async function getMe() {
       try {
-        const { message, success, user } = await fetchMe();
+        const { user } = await fetchMe();
         setUser(user);
       } catch (error) {
         setUser({ username: "Guest" });
@@ -25,8 +25,6 @@ const AuthProvder = ({ children }) => {
     loggedIn,
     setLoggedIn,
   };
-
-  console.log("User from Auth Context: ", user);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
