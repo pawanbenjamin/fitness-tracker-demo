@@ -8,11 +8,15 @@ export default function Landing() {
   }
   return (
     <div className="flex flex-col justify-center min-h-screen bg-slate-100 gap-3">
-      <h1 className="xl">Welcome to Fitness Tracker!</h1>
-      <h2>🏃🏿‍♀️ Signup or Login to your Fitness Journey</h2>
+      <h1 className="text-xl">Welcome to Fitness Tracker!</h1>
+      <h2 className="text-lg">🏃🏿‍♀️ Signup or Login to your Fitness Journey</h2>
       <nav className="flex justify-center gap-6">
-        <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/register">
+          <button className="btn text-lg">Register</button>
+        </Link>
+        <Link to="/login">
+          <button className="btn text-lg">Login</button>
+        </Link>
       </nav>
     </div>
   );
