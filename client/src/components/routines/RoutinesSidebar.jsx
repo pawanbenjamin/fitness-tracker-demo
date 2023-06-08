@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import useRoutines from "../../hooks/useRoutines";
-export default function RoutinesSidebar() {
-  const { myRoutines } = useRoutines();
+export default function RoutinesSidebar({ myRoutines }) {
   return (
     <div className="bg-slate-400">
       <h1>Routines Sidebar</h1>

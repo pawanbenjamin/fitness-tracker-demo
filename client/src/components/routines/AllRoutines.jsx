@@ -1,9 +1,9 @@
 import CreateRoutineForm from "./CreateRoutineForm";
-export default function AllRoutines({ setMyRoutines }) {
+export default function AllRoutines() {
   return (
     <div>
       <h1>All Routines</h1>
-      <CreateRoutineForm setMyRoutines={setMyRoutines} />
+      <CreateRoutineForm />
     </div>
   );
 }

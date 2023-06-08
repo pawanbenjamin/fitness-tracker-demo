@@ -1,13 +1,13 @@
 import { useState } from "react";
-
+import { useOutletContext } from "react-router-dom";
 import { createRoutine } from "../../api/routines";
-import useRoutines from "../../hooks/useRoutines";
+
 export default function CreateRoutineForm() {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [message, setMessage] = useState("");
 
-  const { myRoutines, setMyRoutines } = useRoutines();
+  const { myRoutines, setMyRoutines } = useOutletContext();
 
   async function handleSubmit(e) {
     e.preventDefault();
