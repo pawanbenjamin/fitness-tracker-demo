@@ -1,3 +1,7 @@
 export default function Profile() {
-  return <h1>My Profile</h1>;
+  return (
+    <div className="bg-slate-50">
+      <h1>My Profile Page</h1>
+    </div>
+  );
 }

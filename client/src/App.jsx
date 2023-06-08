@@ -20,6 +20,7 @@ function App() {
           />
           <Route path="/dashboard/profile" element={<Profile />} />
         </Route>
+        <Route path="*" element={<Landing />} />
       </Routes>
     </>
   );

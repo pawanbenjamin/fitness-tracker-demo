@@ -13,7 +13,7 @@ export default function Nav() {
   }
 
   return (
-    <nav>
+    <nav className="col-span-2 flex flex-row justify-evenly bg-slate-300">
       <h3>hello, {user.username}</h3>
       <Link to="/dashboard/activities">Activities</Link>
       <Link to="/dashboard/profile">My Profile</Link>
