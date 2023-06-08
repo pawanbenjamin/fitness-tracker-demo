@@ -5,7 +5,6 @@ import Nav from "./Nav";
 import useAuth from "../hooks/useAuth";
 import Footer from "./Footer";
 import { fetchMyRoutines } from "../api/routines";
-import RoutinesProvider from "./routines/RoutinesProvider";
 
 export default function Dashboard() {
   const { loggedIn } = useAuth();
@@ -26,7 +25,6 @@ export default function Dashboard() {
   return (
     <div className="grid grid-cols-layout grid-rows-layout">
       <Nav />
-
       <RoutinesSidebar myRoutines={myRoutines} />
       <Outlet context={{ myRoutines, setMyRoutines }} />
       <Footer />

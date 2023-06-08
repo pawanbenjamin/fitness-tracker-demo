@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useRoutines from "../../hooks/useRoutines";
+
 export default function RoutinesSidebar({ myRoutines }) {
   return (
     <div className="bg-slate-400">
