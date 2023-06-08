@@ -28,20 +28,29 @@ export default function AuthForm() {
     } catch (error) {
       setError(error.message);
     }
+    setUsername("");
+    setPassword("");
   }
 
   return (
-    <div className="flex flex-col justify-center min-h-screen bg-slate-100">
-      {error && <p>{error}</p>}
+    <div className="flex flex-col h-screen justify-center">
       <form onSubmit={handleSubmit}>
-        {pathname === "/register" ? <h2>Register</h2> : <h2>Login</h2>}
-        <label>Username: </label>
-        <input
-          type="text"
-          placeholder="username"
-          name="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        {pathname === "/register" ? (
+          <h2 className="text-2xl">Register</h2>
+        ) : (
+          <h2 className="text-2xl">Login</h2>
+        )}
+        {error && <p>{error}</p>}
+        <label>
+          Username:{" "}
+          <input
+            type="text"
+            placeholder="username"
+            name="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+
         <label>
           Password:{" "}
           <input
@@ -51,7 +60,7 @@ export default function AuthForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button>Submit!</button>
+        <button className="btn">Submit!</button>
       </form>
       {pathname === "/register" ? (
         <p>

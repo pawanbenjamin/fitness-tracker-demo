@@ -12,7 +12,7 @@ export default function Dashboard() {
     navigate("/");
   }
   return (
-    <div className="grid grid-cols-layout grid-rows-layout min-h-screen">
+    <div className="grid grid-cols-layout grid-rows-layout">
       <Nav />
       <RoutinesSidebar />
       <Outlet />

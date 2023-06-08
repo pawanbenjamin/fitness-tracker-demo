@@ -5,12 +5,12 @@ export default {
     extend: {
       gridTemplateRows: {
         // Complex site-specific row configuration
-        layout: "100px 100% 100px",
+        layout: "10vh 80vh 10vh"
       },
       gridTemplateColumns: {
-        layout: "25% 75%",
-      },
-    },
+        layout: "25% 75%"
+      }
+    }
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui")]
 };
