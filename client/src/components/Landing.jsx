@@ -1,11 +1,17 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+
 export default function Landing() {
   const { loggedIn } = useAuth();
   const navigate = useNavigate();
-  if (loggedIn) {
-    navigate("/dashboard");
-  }
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/dashboard");
+    }
+  }, [loggedIn, navigate]);
+
   return (
     <div className="flex flex-col justify-center min-h-screen bg-slate-100 gap-5">
       <div className="flex flex-col gap-5">

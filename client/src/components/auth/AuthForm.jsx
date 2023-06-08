@@ -14,6 +14,10 @@ export default function AuthForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!username.length || !password.length) {
+      setError("You must add a valid username and password");
+      return;
+    }
     try {
       let result;
       if (pathname === "/register") {
@@ -47,6 +51,7 @@ export default function AuthForm() {
             type="text"
             placeholder="username"
             name="username"
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
@@ -57,6 +62,7 @@ export default function AuthForm() {
             type="password"
             placeholder="password"
             name="password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
