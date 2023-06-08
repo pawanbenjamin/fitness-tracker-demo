@@ -8,7 +8,7 @@ import Profile from "./components/Profile";
 
 function App() {
   return (
-    <>
+    <div className="font-mono">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<AuthForm />} />
@@ -22,7 +22,7 @@ function App() {
         </Route>
         <Route path="*" element={<Landing />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

@@ -31,7 +31,7 @@ export default function AuthForm() {
   }
 
   return (
-    <div className="flex flex-col justify-center min-h-screen">
+    <div className="flex flex-col justify-center min-h-screen bg-slate-100">
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         {pathname === "/register" ? <h2>Register</h2> : <h2>Login</h2>}

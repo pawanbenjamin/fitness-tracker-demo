@@ -13,8 +13,8 @@ export default function Nav() {
   }
 
   return (
-    <nav className="col-span-2 flex flex-row justify-evenly bg-slate-300">
-      <h3>hello, {user.username}</h3>
+    <nav className="col-span-2 flex flex-row justify-evenly align-text-bottom bg-slate-300">
+      <p>hello, {user.username}</p>
       <Link to="/dashboard/activities">Activities</Link>
       <Link to="/dashboard/profile">My Profile</Link>
       <button onClick={handleLogout}>Log Out</button>
