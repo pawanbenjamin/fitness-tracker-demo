@@ -8,7 +8,6 @@ import { fetchMyRoutines } from "../api/routines";
 import RoutinesProvider from "./routines/RoutinesProvider";
 
 export default function Dashboard() {
-  const [myRoutines, setMyRoutines] = useState([]);
   const { loggedIn } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
