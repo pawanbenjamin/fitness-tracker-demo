@@ -5,6 +5,8 @@ import "./App.css";
 import Landing from "./components/Landing";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
+import AllRoutines from "./components/routines/AllRoutines";
+import SelectedRoutine from "./components/routines/SelectedRoutine";
 
 function App() {
   return (
@@ -19,6 +21,11 @@ function App() {
             element={<h1>All Activities</h1>}
           />
           <Route path="/dashboard/profile" element={<Profile />} />
+          <Route path="/dashboard/routines" element={<AllRoutines />} />
+          <Route
+            path="/dashboard/routines/:routineId"
+            element={<SelectedRoutine />}
+          />
         </Route>
         <Route path="*" element={<Landing />} />
       </Routes>

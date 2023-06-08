@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 import AuthProvder from "./components/auth/AuthProvider.jsx";
+import RoutinesProvider from "./components/routines/RoutinesProvider.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

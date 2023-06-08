@@ -2,7 +2,7 @@ const client = require("../client");
 
 async function createRoutine({ name, goal, creator_id, is_public = true }) {
   const {
-    rows: [routine],
+    rows: [routine]
   } = await client.query(
     `
             INSERT INTO routines (name, goal, creator_id, is_public)
@@ -16,7 +16,7 @@ async function createRoutine({ name, goal, creator_id, is_public = true }) {
 
 async function getRoutineById(id) {
   const {
-    rows: [routine],
+    rows: [routine]
   } = await client.query(
     `
             SELECT * FROM routines
@@ -29,7 +29,7 @@ async function getRoutineById(id) {
 
 async function deleteRoutineById(id) {
   const {
-    rows: [deletedRoutine],
+    rows: [deletedRoutine]
   } = await client.query(
     `
         DELETE FROM routines
@@ -49,7 +49,7 @@ async function updateRoutineById(id, fields) {
     .join(`, `);
 
   const {
-    rows: [updatedRoutine],
+    rows: [updatedRoutine]
   } = await client.query(
     `
         UPDATE routines
@@ -73,7 +73,7 @@ async function getAllRoutinesByUserId(id) {
   const { rows } = await client.query(
     `
         SELECT * FROM routines
-        WHERE id=$1
+        WHERE creator_id=$1
     `,
     [id]
   );
@@ -86,5 +86,5 @@ module.exports = {
   deleteRoutineById,
   updateRoutineById,
   getAllPublicRoutines,
-  getAllRoutinesByUserId,
+  getAllRoutinesByUserId
 };
