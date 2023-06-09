@@ -38,11 +38,11 @@ export default function AuthForm() {
 
   return (
     <div className="flex flex-col h-screen justify-center">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         {pathname === "/register" ? (
-          <h2 className="text-2xl">Register</h2>
+          <h2 className="text-2xl font-bold">Register</h2>
         ) : (
-          <h2 className="text-2xl">Login</h2>
+          <h2 className="text-2xl font-bold">Login</h2>
         )}
         {error && <p>{error}</p>}
         <label>

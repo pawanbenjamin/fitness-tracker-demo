@@ -17,7 +17,7 @@ export default function Landing() {
       <div className="flex flex-col gap-5">
         <h1 className="text-xl font-bold">Welcome to Fitness Tracker!</h1>
         <h2 className="text-xl font-bold">
-          🏃🏿‍♀️ Signup or Login to your Fitness Journey
+          🏃🏿‍♀️ Reegister or Login to your Fitness Journey
         </h2>
       </div>
       <nav className="flex justify-center gap-6">
