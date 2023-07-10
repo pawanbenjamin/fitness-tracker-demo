@@ -6,16 +6,17 @@ const {
   getRoutineById,
   createRoutine,
   updateRoutineById,
-  deleteRoutineById
+  deleteRoutineById,
 } = require("../db/adapters/routines");
 
+// GET /api/routines/
 routinesRouter.get("/", async (req, res, next) => {
   try {
     const allRoutines = await getAllPublicRoutines();
     res.send({
       success: true,
       message: "All Public Routines Found",
-      data: allRoutines
+      data: allRoutines,
     });
   } catch (error) {
     next(error);
@@ -48,7 +49,7 @@ routinesRouter.post("/", authRequired, async (req, res, next) => {
     res.send({
       success: true,
       message: "Routine Created",
-      data: createdRoutine
+      data: createdRoutine,
     });
   } catch (error) {
     next(error);
@@ -61,7 +62,7 @@ routinesRouter.patch("/:id", authRequired, async (req, res, next) => {
     const routine = await getRoutineById(id);
     if (routine.creator_id !== req.user.id) {
       next({
-        message: "You are not able to edit this routine!"
+        message: "You are not able to edit this routine!",
       });
       return;
     }
@@ -69,7 +70,7 @@ routinesRouter.patch("/:id", authRequired, async (req, res, next) => {
     res.send({
       success: true,
       message: "Routine Updated",
-      data: updatedRoutine
+      data: updatedRoutine,
     });
   } catch (error) {
     next(error);
@@ -82,7 +83,7 @@ routinesRouter.delete("/:id", authRequired, async (req, res, next) => {
     const routine = await getRoutineById(id);
     if (routine.creator_id !== req.user.id) {
       next({
-        message: "You are not able to delete this routine!"
+        message: "You are not able to delete this routine!",
       });
       return;
     }
@@ -90,7 +91,7 @@ routinesRouter.delete("/:id", authRequired, async (req, res, next) => {
     res.send({
       success: true,
       message: "Routine Deleted",
-      data: deletedRoutine
+      data: deletedRoutine,
     });
   } catch (error) {
     next(error);

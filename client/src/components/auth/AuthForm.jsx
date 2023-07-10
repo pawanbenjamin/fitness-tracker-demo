@@ -38,45 +38,47 @@ export default function AuthForm() {
 
   return (
     <div className="flex flex-col h-screen justify-center">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-        {pathname === "/register" ? (
-          <h2 className="text-2xl font-bold">Register</h2>
-        ) : (
-          <h2 className="text-2xl font-bold">Login</h2>
-        )}
-        {error && <p>{error}</p>}
-        <label>
-          Username:{" "}
-          <input
-            type="text"
-            placeholder="username"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
+      <div className="w-120">
+        <form onSubmit={handleSubmit} className="">
+          {pathname === "/register" ? (
+            <h2 className="text-2xl font-bold">Register</h2>
+          ) : (
+            <h2 className="text-2xl font-bold">Login</h2>
+          )}
+          {error && <p>{error}</p>}
+          <label>
+            Username:{" "}
+            <input
+              type="text"
+              placeholder="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
 
-        <label>
-          Password:{" "}
-          <input
-            type="password"
-            placeholder="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button className="btn">Submit!</button>
-      </form>
-      {pathname === "/register" ? (
-        <p>
-          Already have an account? <Link to="/login">Login Here</Link>
-        </p>
-      ) : (
-        <p>
-          Don't have an account? <Link to="/register">Register Here</Link>
-        </p>
-      )}
+          <label>
+            Password:{" "}
+            <input
+              type="password"
+              placeholder="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <button className="btn w-24">Submit!</button>
+        </form>
+        {pathname === "/register" ? (
+          <p>
+            Already have an account? <Link to="/login">Login Here</Link>
+          </p>
+        ) : (
+          <p>
+            Don't have an account? <Link to="/register">Register Here</Link>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
