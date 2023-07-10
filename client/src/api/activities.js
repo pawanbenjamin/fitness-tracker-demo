@@ -1,10 +1,10 @@
 export async function fetchAllActivities() {
   const response = await fetch("/api/activities");
-  if (!response.ok) {
+  const { success, message, data } = await response.json();
+  if (!success) {
     throw {
-      message: "Failed to fetch Activities",
+      message,
     };
   }
-  const { success, message, data } = await response.json();
   return { success, message, data };
 }
