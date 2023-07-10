@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import AllRoutines from "./components/routines/AllRoutines";
 import SelectedRoutine from "./components/routines/SelectedRoutine";
+import AllActivities from "./components/activities/AllActivities";
 
 function App() {
   return (
@@ -16,10 +17,7 @@ function App() {
         <Route path="/register" element={<AuthForm />} />
         <Route path="/login" element={<AuthForm />} />
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route
-            path="/dashboard/activities"
-            element={<h1>All Activities</h1>}
-          />
+          <Route path="/dashboard/activities" element={<AllActivities />} />
           <Route path="/dashboard/profile" element={<Profile />} />
           <Route path="/dashboard/routines" element={<AllRoutines />} />
           <Route
